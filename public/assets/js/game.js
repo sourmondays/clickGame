@@ -4,6 +4,50 @@ const startEl = document.querySelector('#start');
 const gameWrapperEl = document.querySelector('#game-wrapper');
 const playernameForm = document.querySelector('#playername-form');
 
+//GAME CODE 
+const score = document.querySelector(".score");
+const playGround = document.querySelector("#playground");
+const startGame = document.querySelector("#startGame");
+
+let player = { score: 0 }
+startGame.addEventListener('click', function () {
+	startGame.style.display = "none";
+	let ranTime = Math.random() * 2000 + 1000;
+	setTimeout(makeItem, ranTime);
+})
+
+function makeItem() {
+	let boundary = playGround.getBoundingClientRect();
+	console.log(boundary);
+	let div = document.createElement("div");
+	let ul = document.createElement("ul");
+	div.style.position = ("absolute");
+	div.style.left = Math.random() * boundary.width + "px";
+	div.style.top = Math.random() * boundary.height + "px";
+	div.style.width = Math.random() * 10 + 40 + "px";
+	div.style.height = Math.random() * 10 + 40 + "px";
+	div.style.borderRadius = "10%";
+	div.style.cursor = "pointer";
+	div.style.backgroundColor = "#" + Math.random().toString(16).substr(-6);
+	ul.startTime = Date.now();
+	div.addEventListener("click", function () {
+		let endTime = Date.now();
+		let diff = (endTime - ul.startTime) / 1000;
+		score.innerHTML = `${username}: ` + diff + "seconds";
+		// startGame.style.display = "block";
+		clearTimeout(ul.timer);
+		makeItem();
+		playGround.removeChild(div);
+	})
+	div.timer = setTimeout(function () {
+		playGround.removeChild(div);
+		makeItem();
+	}, 1500);
+	playGround.appendChild(div);
+	console.log(div);
+}
+
+//Functionality for players 
 let username = null;
 
 const updateOnlinePlayers = (users) => {
@@ -25,7 +69,6 @@ playernameForm.addEventListener('submit', e => {
 			updateOnlinePlayers(status.onlineUsers);
 		}
 	});
-
 });
 
 socket.on('reconnect', () => {
@@ -39,3 +82,24 @@ socket.on('reconnect', () => {
 socket.on('online-players', (users) => {
 	updateOnlinePlayers(users);
 });
+
+// Particles 
+var count_particles, stats, update;
+stats = new Stats;
+stats.setMode(0);
+stats.domElement.style.position = 'absolute';
+stats.domElement.style.left = '0px';
+stats.domElement.style.top = '0px';
+document.body.appendChild(stats.domElement);
+
+update = function () {
+	stats.begin();
+	stats.end();
+	if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+		count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+	}
+	requestAnimationFrame(update);
+};
+requestAnimationFrame(update);
+
+

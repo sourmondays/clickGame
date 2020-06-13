@@ -10,7 +10,7 @@ function getOnlineUsers() {
 
 // Handle user disconnecting
 function handleUserDisconnect() {
-	debug(`Socket ${this.id} left the chat :(`);
+	debug(`Socket ${this.id} left the game :(`);
 
 	// broadcast to all connected sockets that this user has left the chat
 	if (users[this.id]) {
@@ -23,7 +23,7 @@ function handleUserDisconnect() {
 
 // Handle a new user connecting
 function handleRegisterUser(username, callback) {
-	debug("User '%s' connected to the chat", username);
+	debug("Player '%s' connected to the game", username);
 	users[this.id] = username;
 	callback({
 		joinChat: true,

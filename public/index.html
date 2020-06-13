@@ -13,39 +13,45 @@
 </head>
 
 <body>
-	<div id="app">
-		<div id="start" class="container">
-			<form id="playername-form">
-				<div class="form-group">
-					<input type="text" id="username" class="form-control form-control-lg" required
-						placeholder="Your players name">
-				</div>
+	<div id="particles-js"></div>
+	<!-- <div id="app"> -->
+	<div id="start" class="container">
+		<form id="playername-form">
 
-				<button type="submit" class="btn btn-dark">Enter playground</button>
-			</form><!-- /#playername-form -->
-		</div><!-- /#start -->
 
-		<div id="game-wrapper" class="hide">
+			<div class="form-group">
+				<input type="text" id="username" class="form-control form-control-lg" required
+					placeholder="Your players name">
+			</div>
+			<button type="submit" class="btn btn-dark">Enter game</button>
+		</form><!-- /#playername-form -->
+	</div>
 
-			<div id="play" class="container">
-				<form id="play-form">
-					<img src="./assets/images/Vector-Orange-Wave-PNG-Photos.png" class="img-fluid"
-						alt="Responsive image">
-					</br>
-					<button type="submit" class="btn btn-dark ">Play game</button>
+	<!--start-->
+	<div id="game-wrapper" class="hide">
+		<div id="play" class="container">
+			<div id="playground" class="container">
+				<button type="submit" class="btn btn-warning" id="startGame">Play this game</button>
+			</div>
+		</div>
 
-				</form>
-			</div><!-- /#play-wrapper -->
+		<div id="players">
+			<h2>Players online</h2>
+			<ul id="online-players"></ul>
+			<h2>Scoreboard</h2>
+			<ul id="scoreboard">1/3</ul>
+			<h2>Player time</h2>
+			<ul class="score"></ul>
 
-			<div id="players">
-				<h2>Players online</h2>
-				<ul id="online-players"></ul>
-			</div><!-- /#users -->
-		</div><!-- /#game-wrapper -->
-	</div><!-- /#app -->
+		</div><!-- /#users -->
+	</div><!-- /#game-wrapper -->
+	<!-- </div> -->
 
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="/assets/js/game.js"></script>
+	<script src="./assets/particles/particles.js"></script>
+	<script src="./assets/particles/app_particles.js"></script>
+
 </body>
 
 </html>
