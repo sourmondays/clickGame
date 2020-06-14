@@ -4,12 +4,14 @@ const startEl = document.querySelector('#start');
 const gameWrapperEl = document.querySelector('#game-wrapper');
 const playernameForm = document.querySelector('#playername-form');
 
-//GAME CODE 
-const score = document.querySelector(".score");
+const score = document.querySelector("#score");
 const playGround = document.querySelector("#playground");
 const startGame = document.querySelector("#startGame");
+const showScore = document.querySelector('#showScore')
 
+let scorePlayer = 0;
 let player = { score: 0 }
+
 startGame.addEventListener('click', function () {
 	startGame.style.display = "none";
 	let ranTime = Math.random() * 2000 + 1000;
@@ -33,11 +35,14 @@ function makeItem() {
 	div.addEventListener("click", function () {
 		let endTime = Date.now();
 		let diff = (endTime - ul.startTime) / 1000;
-		score.innerHTML = `${username}: ` + diff + "seconds";
-		// startGame.style.display = "block";
+		score.innerHTML = `${username}: ` + diff + " seconds";
 		clearTimeout(ul.timer);
 		makeItem();
 		playGround.removeChild(div);
+	})
+	div.addEventListener('click', function () {
+		scorePlayer++;
+		showScore.innerHTML = `${username}` + " score: " + scorePlayer;
 	})
 	div.timer = setTimeout(function () {
 		playGround.removeChild(div);
@@ -62,7 +67,7 @@ playernameForm.addEventListener('submit', e => {
 	socket.emit('register-user', username, (status) => {
 		console.log("Server acknowledged the registration", status);
 
-		if (status.joinChat) {
+		if (status.joinGame) {
 			startEl.classList.add('hide');
 			gameWrapperEl.classList.remove('hide');
 
@@ -82,24 +87,5 @@ socket.on('reconnect', () => {
 socket.on('online-players', (users) => {
 	updateOnlinePlayers(users);
 });
-
-// Particles 
-var count_particles, stats, update;
-stats = new Stats;
-stats.setMode(0);
-stats.domElement.style.position = 'absolute';
-stats.domElement.style.left = '0px';
-stats.domElement.style.top = '0px';
-document.body.appendChild(stats.domElement);
-
-update = function () {
-	stats.begin();
-	stats.end();
-	if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
-		count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
-	}
-	requestAnimationFrame(update);
-};
-requestAnimationFrame(update);
 
 

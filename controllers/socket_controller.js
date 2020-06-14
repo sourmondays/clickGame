@@ -26,7 +26,7 @@ function handleRegisterUser(username, callback) {
 	debug("Player '%s' connected to the game", username);
 	users[this.id] = username;
 	callback({
-		joinChat: true,
+		joinGame: true,
 		usernameInUse: false,
 		onlineUsers: getOnlineUsers(),
 	});
