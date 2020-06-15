@@ -7,7 +7,7 @@ const playernameForm = document.querySelector('#playername-form');
 const score = document.querySelector("#score");
 const playGround = document.querySelector("#playground");
 const startGame = document.querySelector("#startGame");
-const showScore = document.querySelector('#showScore')
+const showScore = document.querySelector('#showScore');
 
 let scorePlayer = 0;
 let player = { score: 0 }
@@ -43,6 +43,10 @@ function makeItem() {
 	div.addEventListener('click', function () {
 		scorePlayer++;
 		showScore.innerHTML = `${username}` + " score: " + scorePlayer;
+	})
+	div.addEventListener('click', function play() {
+		var audio = document.getElementById("audio");
+		audio.play();
 	})
 	div.timer = setTimeout(function () {
 		playGround.removeChild(div);
