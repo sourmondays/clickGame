@@ -78,7 +78,7 @@ image.addEventListener('click', e => {
 	image.classList.add('hide');
 })
 
-// Get username from form and emit `register-user`-event to server
+// Get username form and emit `register-user`-event to server
 playernameForm.addEventListener('submit', e => {
 	e.preventDefault();
 
