@@ -7,15 +7,15 @@
 #particles-js {
 	background: #ffc107;
     position: absolute;
-width: 100%;
-height: 100%;
-z-index: -1 !important; 
+    width: 100%;
+    height: 100%;
+    z-index: -1 !important; 
 
 }
 
 canvas {
-  display: block;
-  vertical-align: bottom;
+    display: block;
+    vertical-align: bottom;
 }
 
 .hide {
@@ -23,14 +23,8 @@ canvas {
 }
 
 #playername-form {
-	/* margin: 0 auto; */
 	text-align: center;
 	padding-top: 45vh;
-}
-
-#play-form {
-	margin: 0 auto;
-    text-align: center;
 }
 
 #game-wrapper {
@@ -45,7 +39,6 @@ canvas {
 	border-bottom: 3px solid #ffc107;
 	background-color: rgb(0, 0, 0); 
 }
-
 
 #players h2 {
 	padding: 0.5rem 0.75rem;
@@ -63,17 +56,10 @@ canvas {
 }
 
 #play {
-display: flex;
-height: 100vh;
-align-items: center;
-}
-
-.img-fluid {
-	max-width: 50%;
-}
-
-.btn-dark {
-	text-transform: uppercase;
+	display: flex;
+	height: 100vh;
+	align-items: center;
+	background-color: rgb(0, 0, 0);
 }
 
 #username {
@@ -82,44 +68,64 @@ align-items: center;
 }
 
 #playground {
-	/* background-color: rgb(255, 135, 55); */
 	width: 90%;
 	height: 90%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-
-#play {
-	background-color: rgb(0, 0, 0);
-}
-
-
-#whale-img {
-	height: 10%;
-}
-
-.score {
-	color: white
-}
-
-#player-score {
-	color: white; 
+	max-width: 50vh;
 }
 
 .container {
 	max-width: 1300px;
 }
 
-#scoreboard {
-	font-size: 2rem;
+#loading p {
+color: #000000;
+text-align: center;
+padding-top: 45vh;
+font-weight: 700;
+}
+
+#disconnected p{
+	font-weight: 700;
 	text-align: center;
+	color: #000000;
 }
 
-p {
-	color: #ffc107;
+h1 {
+	color: #000000;
+	text-align: center;
+	padding-top: 35vh;
 }
 
+.btn-dark {
+	display: flex;
+	margin: auto;
+	text-transform: uppercase;
+}
 
+#image {
+	width: 10vh;
+    position: absolute;
+	border-radius: 15%;
+}
 
+#gameOver p {
+	text-align: center;
+	font-weight: 700;
+	font-size: 3vh;
+}
 
+h2 {
+	text-align: center;
+	color: #000000;
+}
+
+.list-item {
+	list-style-type: none;
+}
+
+#result {
+	color: #000000;
+}
